@@ -192,10 +192,11 @@ const sessionoptions = {
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true, // 🔥 ADD THIS
     cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",  
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
+        secure: true,          // 🔥 FORCE TRUE
+        sameSite: "none",      // 🔥 FORCE NONE
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7,
     },
