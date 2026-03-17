@@ -174,6 +174,19 @@ store.on("error", (err) => {
 
 
 // ✅ SESSION CONFIG
+// const sessionoptions = {
+//     store,
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         httpOnly: true,
+//         secure: true,        // 🔥 required for Render (HTTPS)
+//         sameSite: "none",    // 🔥 required for cross-site cookies
+//         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+//         maxAge: 1000 * 60 * 60 * 24 * 7,
+//     },
+// };
 const sessionoptions = {
     store,
     secret: process.env.SECRET,
@@ -181,8 +194,8 @@ const sessionoptions = {
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: true,        // 🔥 required for Render (HTTPS)
-        sameSite: "none",    // 🔥 required for cross-site cookies
+        secure: process.env.NODE_ENV === "production",  
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7,
     },
