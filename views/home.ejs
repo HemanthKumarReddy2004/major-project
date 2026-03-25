@@ -50,8 +50,7 @@
         <div class="home-card-grid">
             <% if (featuredListings.length) { %>
                 <% featuredListings.forEach((listing) => { %>
-                    <!-- <a href="/listings/<%= listing._id %>" class="home-card"> -->
-                         <a href="<%= currentUser ? `/listings/${listing._id}` : '/login' %>" class="home-card"></a>
+                          <a href="<%= currentUser ? `/listings/${listing._id}` : '/login' %>" class="home-card">
                         <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
                         <div class="home-card-body">
                             <h3><%= listing.title %></h3>
