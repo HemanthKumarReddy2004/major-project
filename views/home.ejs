@@ -1,0 +1,93 @@
+<div class="home-page">
+    <section class="home-hero">
+        <div class="home-hero-content">
+            <p class="home-kicker">Live anywhere, belong everywhere</p>
+            <h1>Find your next stay, experience, and unforgettable journey.</h1>
+            <p class="home-subtitle">
+                Discover premium homes, local experiences, and curated travel services inspired by the world’s top
+                marketplace platforms.
+            </p>
+            <div class="home-hero-actions">
+                <a href="/listings" class="btn home-primary-btn">Start exploring</a>
+                <a href="/listings/new" class="btn home-secondary-btn">WanderLust your home</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-search-panel">
+        <div class="home-search-grid">
+            <div>
+                <label>Where</label>
+                <input type="text" placeholder="Search destinations" />
+            </div>
+            <div>
+                <label>Check in</label>
+                <input type="date" />
+            </div>
+            <div>
+                <label>Check out</label>
+                <input type="date" />
+            </div>
+            <div>
+                <label>Guests</label>
+                <input type="number" min="1" placeholder="Add guests" />
+            </div>
+            <a href="/listings" class="btn home-search-btn">Search stays</a>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="home-section-heading">
+            <h2>Featured homes</h2>
+            <a href="/listings">See all</a>
+        </div>
+        <div class="home-card-grid">
+            <% if (featuredListings.length) { %>
+                <% featuredListings.forEach((listing) => { %>
+                    <a href="/listings/<%= listing._id %>" class="home-card">
+                        <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
+                        <div class="home-card-body">
+                            <h3><%= listing.title %></h3>
+                            <p><%= listing.location %>, <%= listing.country %></p>
+                            <span>₹<%= listing.price %> night</span>
+                        </div>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p class="home-empty">No featured listings yet. Add your first listing to get started.</p>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="home-section-heading">
+            <h2>Inspiration for every style</h2>
+        </div>
+        <div class="home-pill-grid">
+            <article>
+                <h3>Design homes</h3>
+                <p>Architectural spaces for luxury city breaks.</p>
+            </article>
+            <article>
+                <h3>Beachfront escapes</h3>
+                <p>Wake up to ocean views and private decks.</p>
+            </article>
+            <article>
+                <h3>Mountain cabins</h3>
+                <p>Peaceful stays with nature at your doorstep.</p>
+            </article>
+            <article>
+                <h3>Unique experiences</h3>
+                <p>Book food tours, workshops, and guided adventures.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="home-cta-banner">
+        <div>
+            <h2>Hosting made simple</h2>
+            <p>Turn your extra space into income with tools to list, manage, and grow your bookings.</p>
+        </div>
+        <a href="/listings/new" class="btn home-primary-btn">Get started hosting</a>
+    </section>
+</div>
