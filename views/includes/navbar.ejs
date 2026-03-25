@@ -22,6 +22,8 @@
 
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top" >
+<% const guestHomeGateLink = (!currentUser && isHomePage) ? "/login" : "/listings"; %>
+<% const guestHostGateLink = (!currentUser && isHomePage) ? "/signup" : "/listings/new"; %>
   <div class="container-fluid">
     <!-- <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a> -->
       <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
@@ -30,7 +32,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+        <!-- <a class="nav-link" href="/listings">Explore</a> -->
+        <a class="nav-link" href="<%= guestHomeGateLink %>">Explore</a>
       </div>
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search">
@@ -39,9 +42,10 @@
        </form>
       </div>
       <div class="navbar-nav ms-auto">
-         <a class="nav-link" href="/listings/new">Airbnb your home</a>
-         
-      <% if (currentUser) { %>
+         <!-- <a class="nav-link" href="/listings/new">Airbnb your home</a> -->
+         <a class="nav-link" href="<%= guestHostGateLink %>">WanderLust your home</a>
+      <!-- <% if (currentUser) { %> -->
+      <% if (currentUser && !isHomePage) { %>
     <a class="nav-link" href="/logout"><b>Log out</b></a>
 <% } else { %>
     <a class="nav-link" href="/signup"><b>Sign up</b></a>

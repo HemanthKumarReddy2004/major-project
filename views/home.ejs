@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate') %>
+<% const homePrimaryLink = currentUser ? "/listings" : "/login"; %>
+<% const hostLink = currentUser ? "/listings/new" : "/signup"; %>
 <div class="home-page">
     <section class="home-hero">
         <div class="home-hero-content">
@@ -9,8 +11,10 @@
                 marketplace platforms.
             </p>
             <div class="home-hero-actions">
-                <a href="/listings" class="btn home-primary-btn">Start exploring</a>
-                <a href="/listings/new" class="btn home-secondary-btn">WanderLust your home</a>
+                <!-- <a href="/listings" class="btn home-primary-btn">Start exploring</a>
+                <a href="/listings/new" class="btn home-secondary-btn">WanderLust your home</a> -->
+                <a href="<%= homePrimaryLink %>" class="btn home-primary-btn">Start exploring</a>
+                <a href="<%= hostLink %>" class="btn home-secondary-btn">WanderLust your home</a>
             </div>
         </div>
     </section>
@@ -40,12 +44,14 @@
     <section class="home-section">
         <div class="home-section-heading">
             <h2>Featured homes</h2>
-            <a href="/listings">See all</a>
+            <!-- <a href="/listings">See all</a> -->
+            <a href="<%= homePrimaryLink %>">See all</a>
         </div>
         <div class="home-card-grid">
             <% if (featuredListings.length) { %>
                 <% featuredListings.forEach((listing) => { %>
-                    <a href="/listings/<%= listing._id %>" class="home-card">
+                    <!-- <a href="/listings/<%= listing._id %>" class="home-card"> -->
+                         <a href="<%= currentUser ? `/listings/${listing._id}` : '/login' %>" class="home-card"></a>
                         <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
                         <div class="home-card-body">
                             <h3><%= listing.title %></h3>
@@ -89,6 +95,7 @@
             <h2>Hosting made simple</h2>
             <p>Turn your extra space into income with tools to list, manage, and grow your bookings.</p>
         </div>
-        <a href="/listings/new" class="btn home-primary-btn">Get started hosting</a>
+        <!-- <a href="/listings/new" class="btn home-primary-btn">Get started hosting</a> -->
+        <a href="<%= hostLink %>" class="btn home-primary-btn">Get started hosting</a>
     </section>
 </div>
